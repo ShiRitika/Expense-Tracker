@@ -10,7 +10,7 @@ router.get("/",(req, res) => {
 
 //post:http://localhost:8080/api/income
 router.post("/api/income", (req, res) => {
-    let { text, amount } = req.body;
+    let { text, amount , date } = req.body;
 
     if( !text && !amount){
         return res.status(422).json({error: "plz fill field properly"});
@@ -19,7 +19,7 @@ router.post("/api/income", (req, res) => {
     const incomeTransaction = new IncomeTransaction({
         text,
         amount,
-        date: new Date()
+        date
     });
 
     incomeTransaction.save().then(() => {
@@ -51,7 +51,7 @@ router.delete("/api/income", async (req, res) => {
 
 //post:http://localhost:8080/api/expense
 router.post("/api/expense", (req, res) => {
-    let { text, amount } = req.body;
+    let { text, amount, date } = req.body;
 
     if( !text && !amount){
         return res.status(422).json({error: "plz fill field properly"});
@@ -60,7 +60,7 @@ router.post("/api/expense", (req, res) => {
     const expenseTransaction = new ExpenseTransaction({
         text,
         amount,
-        date: new Date()
+        date
     });
 
     expenseTransaction.save().then(() => {
@@ -91,15 +91,3 @@ router.delete("/api/expense", async (req, res) => {
 });
 
 module.exports = router;
-
-
-// const router = require("express").Router();//allow us to create different routes in this folder
-// const controller = require("../controller/controller");
-
-// router.route("/api/categories")
-//     .post(controller.createCategories);
-
-// router.route("/api/income").post(controller.create_IncomeTransaction);
-
-
-// module.exports = router;

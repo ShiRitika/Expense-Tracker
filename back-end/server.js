@@ -5,12 +5,12 @@ const app = express();
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
     next();
 });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-// const IncomeTransaction = require("./models/model");
 
 //using routes
 app.use(require("./routes/route")); //added new route to this server
@@ -30,9 +30,6 @@ const port = process.env.PORT || 5000; //using process object access env port va
 
 //mongodb connection
 const con = require("./db/connection");
-
-//using routes
-// app.use(require("./routes/route")); //added new route to this server
 
 con.then(db => {
     if(!db)return process.exit(1);

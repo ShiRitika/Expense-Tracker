@@ -13,37 +13,11 @@ const IncomeTransaction_Model = new Schema({
         required: true,
     },
     date: {
-        type: Date,
-        default: Date.now
+        type: String,
+        require: true
     }
 });
 
-// const ExpenseTransaction_Model = new Schema({
-//     id: {
-//         type: Number,
-//         default: "Anonymous"
-//     },
-//     text: {
-//         type: String,
-//         required: true,
-//         default: "investment"
-//     },
-//     amount: {
-//         type: Number,
-//         required: true,
-//     },
-//     date: {
-//         type: Date,
-//         default: Date.now
-//     }
-// });
-
 const IncomeTransaction = mongoose.model("IncomeTransaction", IncomeTransaction_Model);
-// const ExpenseTransaction = mongoose.model("ExpenseTransaction", ExpenseTransaction_Model);
 
 module.exports = IncomeTransaction;
-// exports.default = IncomeTransaction;
-// module.exports = {
-//     IncomeTransaction,
-//     ExpenseTransaction
-// };
